@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Settings, Type, Minus, Plus } from 'lucide-react';
 
@@ -11,9 +10,7 @@ const SettingsTab = ({ fontSize, onFontSizeChange }: SettingsProps) => {
   const fontSizes = [
     { label: 'Small', value: 'text-xs-accessible', size: 'xs' },
     { label: 'Medium', value: 'text-sm-accessible', size: 'sm' },
-    { label: 'Large', value: 'text-base-accessible', size: 'base' },
-    { label: 'Extra Large', value: 'text-lg-accessible', size: 'lg' },
-    { label: 'Maximum', value: 'text-xl-accessible', size: 'xl' }
+    { label: 'Large', value: 'text-base-accessible', size: 'base' }
   ];
 
   return (
