@@ -13,7 +13,7 @@ const ChatTab = ({ fontSize = 'sm', chatContext }: ChatTabProps) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedChat, setSelectedChat] = useState(null);
 
-  // Mock chat data
+  // Mock chat data with proper clothing images
   const mockChats = [
     {
       id: 1,
@@ -22,7 +22,8 @@ const ChatTab = ({ fontSize = 'sm', chatContext }: ChatTabProps) => {
       time: '2m ago',
       avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face',
       unread: true,
-      item: 'Vintage Denim Jacket'
+      item: 'Vintage Denim Jacket',
+      itemImage: 'https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?w=400&h=400&fit=crop'
     },
     {
       id: 2,
@@ -31,7 +32,8 @@ const ChatTab = ({ fontSize = 'sm', chatContext }: ChatTabProps) => {
       time: '1h ago',
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
       unread: false,
-      item: 'Cozy Sweater'
+      item: 'Cozy Knit Sweater',
+      itemImage: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&h=400&fit=crop'
     },
     {
       id: 3,
@@ -40,7 +42,8 @@ const ChatTab = ({ fontSize = 'sm', chatContext }: ChatTabProps) => {
       time: '3h ago',
       avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
       unread: true,
-      item: 'Summer Dress'
+      item: 'Floral Summer Dress',
+      itemImage: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=400&fit=crop'
     },
     {
       id: 4,
@@ -49,7 +52,8 @@ const ChatTab = ({ fontSize = 'sm', chatContext }: ChatTabProps) => {
       time: '1d ago',
       avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
       unread: false,
-      item: 'Designer Jeans'
+      item: 'Designer Jeans',
+      itemImage: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=400&fit=crop'
     }
   ];
 

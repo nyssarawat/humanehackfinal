@@ -16,12 +16,12 @@ const ProfileTab = () => {
 
   const [isEditing, setIsEditing] = useState(false);
 
-  // Mock favorites data - in a real app, this would come from user's bookmarked items
+  // Mock favorites data with proper clothing images
   const favoriteListings = [
     {
       id: 1,
       title: 'Vintage Denim Jacket',
-      image: 'https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=400&h=400&fit=crop',
+      image: 'https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?w=400&h=400&fit=crop',
       location: 'Brooklyn, NY',
       size: 'M',
       distance: 2,
@@ -32,8 +32,8 @@ const ProfileTab = () => {
     },
     {
       id: 2,
-      title: 'Cozy Sweater',
-      image: 'https://images.unsplash.com/photo-1649972904350-6e44c42644a7?w=400&h=400&fit=crop',
+      title: 'Cozy Knit Sweater',
+      image: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&h=400&fit=crop',
       location: 'Manhattan, NY',
       size: 'L',
       distance: 5,
@@ -44,8 +44,8 @@ const ProfileTab = () => {
     },
     {
       id: 3,
-      title: 'Summer Dress',
-      image: 'https://images.unsplash.com/photo-1649972904351-6e44c42644a7?w=400&h=400&fit=crop',
+      title: 'Floral Summer Dress',
+      image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=400&fit=crop',
       location: 'Queens, NY',
       size: 'S',
       distance: 8,
@@ -194,7 +194,7 @@ const ProfileTab = () => {
             'Notification Preferences',
             'Privacy Settings',
             'Help & Support',
-            'About ThriftShare'
+            'About UpThrift'
           ].map((setting, index) => (
             <button
               key={index}
