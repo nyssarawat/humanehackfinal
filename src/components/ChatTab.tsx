@@ -38,7 +38,7 @@ const ChatTab = ({ fontSize = 'sm', chatContext }: ChatTabProps) => {
     {
       id: 3,
       name: 'Emma Davis',
-      lastMessage: 'When can I pick up the dress?',
+      lastMessage: 'When can I collect the dress?',
       time: '3h ago',
       avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
       unread: true,
@@ -166,7 +166,7 @@ const ChatTab = ({ fontSize = 'sm', chatContext }: ChatTabProps) => {
             {/* Pre-filled Message */}
             <div className="bg-white rounded-xl p-3 border-l-4 border-[#36723f]">
               <p className={`${getFontSizeClass()} text-gray-700`}>
-                Hi! I'm interested in your {selectedChat.contextListing?.title}.
+                Hi! I'm interested in collecting your {selectedChat.contextListing?.title}.
               </p>
             </div>
           </div>
@@ -255,7 +255,7 @@ const ChatTab = ({ fontSize = 'sm', chatContext }: ChatTabProps) => {
             <MessageCircle size={48} className="text-gray-300 mb-4" />
             <h3 className={`${getFontSizeClass()} font-medium text-gray-500 mb-2`}>No conversations found</h3>
             <p className={`${getFontSizeClass()} text-gray-400`}>
-              {searchTerm ? 'Try adjusting your search terms' : 'Start chatting about items you\'re interested in!'}
+              {searchTerm ? 'Try adjusting your search terms' : 'Start chatting about items you\'re interested in collecting!'}
             </p>
           </div>
         )}

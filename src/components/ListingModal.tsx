@@ -19,7 +19,7 @@ const ListingModal = ({ listing, onClose, isBookmarked, onToggleBookmark, fontSi
     } else {
       // Fallback behavior if onNavigateToChat is not provided
       const listingLink = `${window.location.origin}/#listing-${listing.id}`;
-      const message = `Hi! I'm interested in your ${listing.title}. Here's the listing: ${listingLink}`;
+      const message = `Hi! I'm interested in collecting your ${listing.title}. Here's the listing: ${listingLink}`;
       alert(`Opening chat with ${listing.contributor.name}...\nMessage: ${message}`);
     }
   };
@@ -91,7 +91,7 @@ const ListingModal = ({ listing, onClose, isBookmarked, onToggleBookmark, fontSi
                     <span className={`${getFontSizeClass()} text-gray-600`}>{listing.contributor.rating.toFixed(1)}</span>
                   </div>
                   <span className={`${getFontSizeClass()} text-gray-500`}>•</span>
-                  <span className={`${getFontSizeClass()} text-gray-600`}>{listing.contributor.totalDonations} donations</span>
+                  <span className={`${getFontSizeClass()} text-gray-600`}>{listing.contributor.totalDonations} contributions</span>
                 </div>
               </div>
             </div>
@@ -145,7 +145,7 @@ const ListingModal = ({ listing, onClose, isBookmarked, onToggleBookmark, fontSi
               className={`w-full flex items-center justify-center space-x-2 bg-[#bad3de] text-[#132c0b] py-3 rounded-xl font-medium hover:bg-[#a8c8d4] transition-colors ${getFontSizeClass()}`}
             >
               <MessageCircle size={20} />
-              <span>I'm Interested!</span>
+              <span>I Want to Collect This!</span>
             </button>
 
             <button
@@ -160,7 +160,7 @@ const ListingModal = ({ listing, onClose, isBookmarked, onToggleBookmark, fontSi
           {/* Condition Note */}
           <div className="mt-4 p-4 bg-[#36723f] bg-opacity-5 rounded-xl">
             <p className={`${getFontSizeClass()} text-[#36723f]`}>
-              <strong>Free to Good Home!</strong> This item is being given away for free. 
+              <strong>Free to Good Home!</strong> This item is being contributed for free. 
               Please only express interest if you genuinely need it.
             </p>
           </div>

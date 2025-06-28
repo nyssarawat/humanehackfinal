@@ -43,24 +43,24 @@ const SupportTab = () => {
     const lowerMessage = message.toLowerCase();
     
     if (lowerMessage.includes('how') && lowerMessage.includes('work')) {
-      return "UpThrift is simple! Browse free clothing listings, message the owner if interested, and arrange a pickup. You can also post your own items to share with the community.";
-    } else if (lowerMessage.includes('post') || lowerMessage.includes('sell')) {
-      return "To post an item, go to the 'Sell' tab, add photos, fill in the details, and submit. Remember, all items on UpThrift are given away for free!";
+      return "UpThrift is simple! Browse free clothing listings, message the contributor if interested, and arrange a pickup. You can also contribute your own items to share with the community.";
+    } else if (lowerMessage.includes('contribute') || lowerMessage.includes('post')) {
+      return "To contribute an item, go to the 'Contribute' tab, add photos, fill in the details, and submit. Remember, all items on UpThrift are contributed for free!";
     } else if (lowerMessage.includes('pickup') || lowerMessage.includes('meet')) {
       return "For safety, we recommend meeting in public places during daylight hours. Many users prefer coffee shops, libraries, or community centers for exchanges.";
     } else if (lowerMessage.includes('size') || lowerMessage.includes('fit')) {
-      return "Item sizing can vary by brand. We recommend messaging the owner to ask about measurements or fit. Our virtual try-on feature is coming soon!";
+      return "Item sizing can vary by brand. We recommend messaging the contributor to ask about measurements or fit. Our virtual try-on feature is coming soon!";
     } else if (lowerMessage.includes('safe')) {
       return "Your safety is important! Always meet in public places, bring a friend if possible, and trust your instincts. Report any concerning behavior through our app.";
     } else {
-      return "I'm here to help! You can ask me about how UpThrift works, posting items, safety tips, or anything else. For complex issues, please contact our support team.";
+      return "I'm here to help! You can ask me about how UpThrift works, contributing items, safety tips, or anything else. For complex issues, please contact our support team.";
     }
   };
 
   const faqItems = [
     {
       question: "How does UpThrift work?",
-      answer: "Browse free clothing listings, message owners, and arrange pickups!"
+      answer: "Browse free clothing listings, message contributors, and arrange pickups!"
     },
     {
       question: "Is everything really free?",
@@ -68,7 +68,7 @@ const SupportTab = () => {
     },
     {
       question: "How do I arrange pickup?",
-      answer: "Message the item owner through our chat feature to coordinate."
+      answer: "Message the item contributor through our chat feature to coordinate."
     },
     {
       question: "What if an item doesn't fit?",

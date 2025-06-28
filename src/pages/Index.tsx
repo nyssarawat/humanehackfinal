@@ -3,7 +3,7 @@ import { Heart, MessageCircle, User, Plus, HelpCircle, Settings } from 'lucide-r
 import FeedTab from '../components/FeedTab';
 import ChatTab from '../components/ChatTab';
 import ProfileTab from '../components/ProfileTab';
-import SellTab from '../components/SellTab';
+import ContributeTab from '../components/ContributeTab';
 import SupportTab from '../components/SupportTab';
 import SettingsTab from '../components/SettingsTab';
 
@@ -16,7 +16,7 @@ const Index = () => {
   const tabs = [
     { id: 'feed', icon: Heart, label: 'Feed', component: FeedTab },
     { id: 'chat', icon: MessageCircle, label: 'Chat', component: ChatTab },
-    { id: 'sell', icon: Plus, label: 'Sell', component: SellTab },
+    { id: 'contribute', icon: Plus, label: 'Contribute', component: ContributeTab },
     { id: 'profile', icon: User, label: 'Profile', component: ProfileTab },
     { id: 'support', icon: HelpCircle, label: 'Support', component: SupportTab },
     { id: 'settings', icon: Settings, label: 'Settings', component: SettingsTab },

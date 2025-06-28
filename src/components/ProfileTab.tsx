@@ -13,8 +13,8 @@ const ProfileTab = ({ fontSize = 'sm', favoriteItems = new Set() }: ProfileTabPr
     avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=200&h=200&fit=crop&crop=face',
     bio: 'Sustainable fashion lover sharing preloved clothes with the community! 🌱',
     stats: {
-      itemsShared: 23,
-      itemsReceived: 15,
+      itemsContributed: 23,
+      itemsCollected: 15,
       rating: 4.9
     }
   });
@@ -22,9 +22,9 @@ const ProfileTab = ({ fontSize = 'sm', favoriteItems = new Set() }: ProfileTabPr
   const [isEditing, setIsEditing] = useState(false);
 
   const recentActivity = [
-    { type: 'shared', item: 'Vintage Denim Jacket', date: '2 days ago' },
-    { type: 'received', item: 'Cozy Sweater', date: '1 week ago' },
-    { type: 'shared', item: 'Summer Dress', date: '2 weeks ago' },
+    { type: 'contributed', item: 'Vintage Denim Jacket', date: '2 days ago' },
+    { type: 'collected', item: 'Cozy Sweater', date: '1 week ago' },
+    { type: 'contributed', item: 'Summer Dress', date: '2 weeks ago' },
   ];
 
   const getFontSizeClass = () => {
@@ -76,13 +76,13 @@ const ProfileTab = ({ fontSize = 'sm', favoriteItems = new Set() }: ProfileTabPr
       {/* Stats */}
       <div className="grid grid-cols-3 gap-3 mb-4">
         <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 text-center">
-          <div className="text-2xl font-bold text-green-600 mb-1">{user.stats.itemsShared}</div>
-          <div className={`${getFontSizeClass()} text-gray-600`}>Items Shared</div>
+          <div className="text-2xl font-bold text-green-600 mb-1">{user.stats.itemsContributed}</div>
+          <div className={`${getFontSizeClass()} text-gray-600`}>Items Contributed</div>
         </div>
         
         <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 text-center">
-          <div className="text-2xl font-bold text-blue-600 mb-1">{user.stats.itemsReceived}</div>
-          <div className={`${getFontSizeClass()} text-gray-600`}>Items Received</div>
+          <div className="text-2xl font-bold text-blue-600 mb-1">{user.stats.itemsCollected}</div>
+          <div className={`${getFontSizeClass()} text-gray-600`}>Items Collected</div>
         </div>
         
         <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 text-center">
@@ -101,15 +101,15 @@ const ProfileTab = ({ fontSize = 'sm', favoriteItems = new Set() }: ProfileTabPr
           {recentActivity.map((activity, index) => (
             <div key={index} className="flex items-center space-x-3">
               <div className={`p-2 rounded-full ${
-                activity.type === 'shared' ? 'bg-green-100' : 'bg-blue-100'
+                activity.type === 'contributed' ? 'bg-green-100' : 'bg-blue-100'
               }`}>
                 <Gift size={16} className={
-                  activity.type === 'shared' ? 'text-green-600' : 'text-blue-600'
+                  activity.type === 'contributed' ? 'text-green-600' : 'text-blue-600'
                 } />
               </div>
               <div className="flex-1">
                 <p className={`${getFontSizeClass()} font-medium text-gray-800`}>
-                  {activity.type === 'shared' ? 'Shared' : 'Received'}: {activity.item}
+                  {activity.type === 'contributed' ? 'Contributed' : 'Collected'}: {activity.item}
                 </p>
                 <p className={`${getFontSizeClass()} text-gray-500`}>{activity.date}</p>
               </div>

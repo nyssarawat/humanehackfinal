@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Camera, MapPin, Upload, X, Plus } from 'lucide-react';
 
-const SellTab = () => {
+const ContributeTab = () => {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -25,7 +25,7 @@ const SellTab = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // In a real app, this would submit to a backend
-    alert('Listing posted successfully! Your item is now available for others to claim.');
+    alert('Contribution posted successfully! Your item is now available for others to collect.');
     setFormData({
       title: '',
       description: '',
@@ -66,7 +66,7 @@ const SellTab = () => {
   return (
     <div className="h-full overflow-y-auto p-4">
       <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-        <h2 className="text-lg font-semibold text-gray-800 mb-4">Share Your Clothes</h2>
+        <h2 className="text-lg font-semibold text-gray-800 mb-4">Contribute Your Clothes</h2>
         
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Photo Upload */}
@@ -261,7 +261,7 @@ const SellTab = () => {
             className="w-full bg-[#bad3de] text-[#132c0b] py-4 rounded-xl font-medium hover:bg-[#a8c8d4] transition-colors flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <Camera size={20} />
-            <span>Post Item for Free</span>
+            <span>Contribute Item for Free</span>
           </button>
           
           {selectedImages.length === 0 && (
@@ -274,7 +274,7 @@ const SellTab = () => {
         {/* Info Note */}
         <div className="mt-4 p-4 bg-green-50 rounded-xl">
           <p className="text-sm text-green-700">
-            🌱 <strong>Remember:</strong> All items on UpThrift are given away for free! 
+            🌱 <strong>Remember:</strong> All items on UpThrift are contributed for free! 
             You're helping reduce waste and building community connections.
           </p>
         </div>
@@ -283,4 +283,4 @@ const SellTab = () => {
   );
 };
 
-export default SellTab;
+export default ContributeTab;
