@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Search, MessageCircle, Clock, ExternalLink } from 'lucide-react';
 
@@ -121,38 +120,53 @@ const ChatTab = ({ fontSize = 'sm', chatContext }: ChatTabProps) => {
         {/* Listing Context (if available) */}
         {selectedChat.contextListing && (
           <div className="bg-[#36723f] bg-opacity-5 p-4 rounded-xl mb-4">
-            <div className="flex items-center space-x-2 mb-2">
+            <div className="flex items-center space-x-2 mb-3">
               <ExternalLink size={16} className="text-[#36723f]" />
               <span className={`${getFontSizeClass()} font-medium text-[#36723f]`}>About this item:</span>
             </div>
-            <div className="flex items-center space-x-3">
-              <img
-                src={selectedChat.contextListing.image}
-                alt={selectedChat.contextListing.title}
-                className="w-16 h-16 rounded-lg object-cover"
-              />
-              <div className="flex-1">
-                <h4 className={`${getFontSizeClass()} font-semibold text-gray-800`}>
-                  {selectedChat.contextListing.title}
-                </h4>
-                <p className={`${getFontSizeClass()} text-gray-600`}>
-                  Size {selectedChat.contextListing.size} • {selectedChat.contextListing.location}
-                </p>
-                <p className={`${getFontSizeClass()} text-xs text-[#36723f] mt-1`}>
-                  Listing: {listingLink}
+            
+            {/* Embedded Listing Card */}
+            <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 mb-3">
+              <div className="flex items-start space-x-3">
+                <img
+                  src={selectedChat.contextListing.image}
+                  alt={selectedChat.contextListing.title}
+                  className="w-20 h-20 rounded-lg object-cover flex-shrink-0"
+                />
+                <div className="flex-1 min-w-0">
+                  <h4 className={`${getFontSizeClass()} font-semibold text-gray-800 mb-1`}>
+                    {selectedChat.contextListing.title}
+                  </h4>
+                  <p className={`${getFontSizeClass()} text-gray-600 mb-2`}>
+                    Size {selectedChat.contextListing.size} • {selectedChat.contextListing.location}
+                  </p>
+                  <div className="flex items-center space-x-2">
+                    <span className="bg-[#36723f] bg-opacity-10 text-[#36723f] px-2 py-1 rounded-full text-xs">
+                      {selectedChat.contextListing.style}
+                    </span>
+                    <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs">
+                      {selectedChat.contextListing.color}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Listing Link */}
+              <div className="mt-3 pt-3 border-t border-gray-100">
+                <p className={`${getFontSizeClass()} text-xs text-[#36723f] break-all`}>
+                  🔗 {listingLink}
                 </p>
               </div>
             </div>
+
+            {/* Pre-filled Message */}
+            <div className="bg-white rounded-xl p-3 border-l-4 border-[#36723f]">
+              <p className={`${getFontSizeClass()} text-gray-700`}>
+                Hi! I'm interested in your {selectedChat.contextListing?.title}.
+              </p>
+            </div>
           </div>
         )}
-
-        {/* Pre-filled Message */}
-        <div className="bg-white p-4 rounded-xl shadow-sm mb-4">
-          <p className={`${getFontSizeClass()} text-gray-700`}>
-            Hi! I'm interested in your {selectedChat.contextListing?.title || 'item'}. 
-            {listingLink && ` Here's the listing: ${listingLink}`}
-          </p>
-        </div>
 
         {/* Chat Interface Placeholder */}
         <div className="flex-1 bg-white rounded-xl p-4 shadow-sm flex items-center justify-center">
