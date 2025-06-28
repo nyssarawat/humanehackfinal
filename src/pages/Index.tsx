@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Heart, MessageCircle, User, Plus, HelpCircle, Settings } from 'lucide-react';
 import FeedTab from '../components/FeedTab';
@@ -33,7 +32,7 @@ const Index = () => {
     <div className="min-h-screen flex flex-col max-w-md mx-auto pb-20" style={{ fontFamily: 'Verdana, sans-serif' }}>
       {/* Header */}
       <header className="bg-white shadow-sm p-4 rounded-b-2xl">
-        <h1 className="text-2xl font-bold text-[#36723f] text-center">ThriftShare</h1>
+        <h1 className="text-2xl font-bold text-[#36723f] text-center">UpThrift</h1>
         <p className="text-sm text-[#36723f] text-center mt-1">Share clothes, spread love</p>
       </header>
 

@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Camera, MapPin, Upload } from 'lucide-react';
 
@@ -213,7 +212,7 @@ const SellTab = () => {
         {/* Info Note */}
         <div className="mt-4 p-4 bg-green-50 rounded-xl">
           <p className="text-sm text-green-700">
-            🌱 <strong>Remember:</strong> All items on ThriftShare are given away for free! 
+            🌱 <strong>Remember:</strong> All items on UpThrift are given away for free! 
             You're helping reduce waste and building community connections.
           </p>
         </div>

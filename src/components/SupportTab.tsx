@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Send, Phone, Mail, MessageCircle, HelpCircle } from 'lucide-react';
 
@@ -6,7 +5,7 @@ const SupportTab = () => {
   const [chatMessages, setChatMessages] = useState([
     {
       id: 1,
-      text: "Hi! I'm your ThriftShare assistant. How can I help you today?",
+      text: "Hi! I'm your UpThrift assistant. How can I help you today?",
       isBot: true,
       timestamp: new Date()
     }
@@ -44,9 +43,9 @@ const SupportTab = () => {
     const lowerMessage = message.toLowerCase();
     
     if (lowerMessage.includes('how') && lowerMessage.includes('work')) {
-      return "ThriftShare is simple! Browse free clothing listings, message the owner if interested, and arrange a pickup. You can also post your own items to share with the community.";
+      return "UpThrift is simple! Browse free clothing listings, message the owner if interested, and arrange a pickup. You can also post your own items to share with the community.";
     } else if (lowerMessage.includes('post') || lowerMessage.includes('sell')) {
-      return "To post an item, go to the 'Sell' tab, add photos, fill in the details, and submit. Remember, all items on ThriftShare are given away for free!";
+      return "To post an item, go to the 'Sell' tab, add photos, fill in the details, and submit. Remember, all items on UpThrift are given away for free!";
     } else if (lowerMessage.includes('pickup') || lowerMessage.includes('meet')) {
       return "For safety, we recommend meeting in public places during daylight hours. Many users prefer coffee shops, libraries, or community centers for exchanges.";
     } else if (lowerMessage.includes('size') || lowerMessage.includes('fit')) {
@@ -54,18 +53,18 @@ const SupportTab = () => {
     } else if (lowerMessage.includes('safe')) {
       return "Your safety is important! Always meet in public places, bring a friend if possible, and trust your instincts. Report any concerning behavior through our app.";
     } else {
-      return "I'm here to help! You can ask me about how ThriftShare works, posting items, safety tips, or anything else. For complex issues, please contact our support team.";
+      return "I'm here to help! You can ask me about how UpThrift works, posting items, safety tips, or anything else. For complex issues, please contact our support team.";
     }
   };
 
   const faqItems = [
     {
-      question: "How does ThriftShare work?",
+      question: "How does UpThrift work?",
       answer: "Browse free clothing listings, message owners, and arrange pickups!"
     },
     {
       question: "Is everything really free?",
-      answer: "Yes! ThriftShare is all about sharing clothes for free to reduce waste."
+      answer: "Yes! UpThrift is all about sharing clothes for free to reduce waste."
     },
     {
       question: "How do I arrange pickup?",
@@ -160,7 +159,7 @@ const SupportTab = () => {
             </div>
             <div>
               <p className="text-sm font-medium text-gray-800">Call Support</p>
-              <p className="text-xs text-gray-600">1-800-THRIFT-1</p>
+              <p className="text-xs text-gray-600">1-800-UPTHRIFT</p>
             </div>
           </div>
           
@@ -170,7 +169,7 @@ const SupportTab = () => {
             </div>
             <div>
               <p className="text-sm font-medium text-gray-800">Email Support</p>
-              <p className="text-xs text-gray-600">help@thriftshare.com</p>
+              <p className="text-xs text-gray-600">help@upthrift.com</p>
             </div>
           </div>
         </div>
