@@ -1,4 +1,3 @@
-
 import { X, Heart, MapPin, Palette, Shirt, Eye, MessageCircle, Star } from 'lucide-react';
 import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar';
 
@@ -14,10 +13,11 @@ interface ListingModalProps {
 const ListingModal = ({ listing, onClose, isBookmarked, onToggleBookmark, fontSize = 'sm', onNavigateToChat }: ListingModalProps) => {
   const handleInterest = () => {
     if (onNavigateToChat) {
+      // Navigate to chat with the contributor and pass the listing context
       onNavigateToChat(listing, listing.contributor.name);
-      onClose();
+      onClose(); // Close the modal after navigating
     } else {
-      // Fallback behavior
+      // Fallback behavior if onNavigateToChat is not provided
       const listingLink = `${window.location.origin}/#listing-${listing.id}`;
       const message = `Hi! I'm interested in your ${listing.title}. Here's the listing: ${listingLink}`;
       alert(`Opening chat with ${listing.contributor.name}...\nMessage: ${message}`);
