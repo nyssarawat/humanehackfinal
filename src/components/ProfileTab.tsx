@@ -1,6 +1,5 @@
-
 import { useState } from 'react';
-import { Edit3, MapPin, Star, Gift, Settings, Camera } from 'lucide-react';
+import { Edit3, MapPin, Star, Gift, Settings, Camera, Heart, Eye } from 'lucide-react';
 
 const ProfileTab = () => {
   const [user, setUser] = useState({
@@ -16,6 +15,46 @@ const ProfileTab = () => {
   });
 
   const [isEditing, setIsEditing] = useState(false);
+
+  // Mock favorites data - in a real app, this would come from user's bookmarked items
+  const favoriteListings = [
+    {
+      id: 1,
+      title: 'Vintage Denim Jacket',
+      image: 'https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=400&h=400&fit=crop',
+      location: 'Brooklyn, NY',
+      size: 'M',
+      distance: 2,
+      contributor: {
+        name: 'Sarah Johnson',
+        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face'
+      }
+    },
+    {
+      id: 2,
+      title: 'Cozy Sweater',
+      image: 'https://images.unsplash.com/photo-1649972904350-6e44c42644a7?w=400&h=400&fit=crop',
+      location: 'Manhattan, NY',
+      size: 'L',
+      distance: 5,
+      contributor: {
+        name: 'Mike Chen',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face'
+      }
+    },
+    {
+      id: 3,
+      title: 'Summer Dress',
+      image: 'https://images.unsplash.com/photo-1649972904351-6e44c42644a7?w=400&h=400&fit=crop',
+      location: 'Queens, NY',
+      size: 'S',
+      distance: 8,
+      contributor: {
+        name: 'Emma Davis',
+        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face'
+      }
+    }
+  ];
 
   const recentActivity = [
     { type: 'shared', item: 'Vintage Denim Jacket', date: '2 days ago' },
@@ -77,6 +116,49 @@ const ProfileTab = () => {
           </div>
           <div className="text-xs text-gray-600">Rating</div>
         </div>
+      </div>
+
+      {/* Favorites Section */}
+      <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 mb-4">
+        <div className="flex items-center space-x-2 mb-3">
+          <Heart size={20} className="text-red-500 fill-red-500" />
+          <h3 className="text-lg font-semibold text-gray-800">My Favorites</h3>
+          <span className="bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs font-medium">
+            {favoriteListings.length}
+          </span>
+        </div>
+        
+        {favoriteListings.length > 0 ? (
+          <div className="space-y-3">
+            {favoriteListings.map((listing) => (
+              <div key={listing.id} className="flex items-center space-x-3 p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+                <img
+                  src={listing.image}
+                  alt={listing.title}
+                  className="w-16 h-16 rounded-lg object-cover"
+                />
+                <div className="flex-1 min-w-0">
+                  <h4 className="text-sm font-semibold text-gray-800 truncate">{listing.title}</h4>
+                  <p className="text-xs text-gray-600 mb-1">{listing.location} • {listing.distance}mi away</p>
+                  <div className="flex items-center justify-between">
+                    <span className="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">
+                      Size {listing.size}
+                    </span>
+                    <button className="p-1 hover:bg-gray-200 rounded-full transition-colors">
+                      <Eye size={14} className="text-gray-600" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-8">
+            <Heart size={48} className="text-gray-300 mx-auto mb-3" />
+            <p className="text-gray-500 text-sm">No favorites yet</p>
+            <p className="text-gray-400 text-xs mt-1">Heart items you love to save them here!</p>
+          </div>
+        )}
       </div>
 
       {/* Recent Activity */}
