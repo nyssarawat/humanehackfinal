@@ -11,6 +11,7 @@ const Index = () => {
   const [activeTab, setActiveTab] = useState('feed');
   const [fontSize, setFontSize] = useState('sm');
   const [chatContext, setChatContext] = useState(null);
+  const [favoriteItems, setFavoriteItems] = useState(new Set());
 
   const tabs = [
     { id: 'feed', icon: Heart, label: 'Feed', component: FeedTab },
@@ -24,6 +25,16 @@ const Index = () => {
   const handleNavigateToChat = (listing, contributorName) => {
     setChatContext({ listing, contributorName });
     setActiveTab('chat');
+  };
+
+  const handleFavoriteToggle = (itemId) => {
+    const newFavorites = new Set(favoriteItems);
+    if (newFavorites.has(itemId)) {
+      newFavorites.delete(itemId);
+    } else {
+      newFavorites.add(itemId);
+    }
+    setFavoriteItems(newFavorites);
   };
 
   const ActiveComponent = tabs.find(tab => tab.id === activeTab)?.component || FeedTab;
@@ -41,9 +52,16 @@ const Index = () => {
         {activeTab === 'settings' ? (
           <SettingsTab fontSize={fontSize} onFontSizeChange={setFontSize} />
         ) : activeTab === 'feed' ? (
-          <FeedTab fontSize={fontSize} onNavigateToChat={handleNavigateToChat} />
+          <FeedTab 
+            fontSize={fontSize} 
+            onNavigateToChat={handleNavigateToChat}
+            favoriteItems={favoriteItems}
+            onFavoriteToggle={handleFavoriteToggle}
+          />
         ) : activeTab === 'chat' ? (
           <ChatTab fontSize={fontSize} chatContext={chatContext} />
+        ) : activeTab === 'profile' ? (
+          <ProfileTab fontSize={fontSize} favoriteItems={favoriteItems} />
         ) : (
           <ActiveComponent fontSize={fontSize} />
         )}

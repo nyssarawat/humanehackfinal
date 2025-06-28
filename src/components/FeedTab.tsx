@@ -331,7 +331,6 @@ const FeedTab = ({ fontSize = 'sm', onNavigateToChat }: FeedTabProps) => {
       newBookmarks.add(id);
     }
     setBookmarkedItems(newBookmarks);
-    // Don't change any visual state - just add to favorites silently
   };
 
   const getFontSizeClass = () => {
@@ -401,12 +400,18 @@ const FeedTab = ({ fontSize = 'sm', onNavigateToChat }: FeedTabProps) => {
                   onClick={() => setSelectedListing(listing)}
                 />
                 <button
-                  onClick={() => toggleBookmark(listing.id)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleBookmark(listing.id);
+                  }}
                   className="absolute top-2 right-2 p-2 bg-white/80 rounded-full shadow-sm hover:bg-white transition-colors"
                 >
                   <Heart
                     size={16}
-                    className="text-gray-600 hover:text-red-500"
+                    className={bookmarkedItems.has(listing.id) 
+                      ? 'fill-red-500 text-red-500' 
+                      : 'text-gray-600 hover:text-red-500'
+                    }
                   />
                 </button>
                 <div className="absolute bottom-2 left-2 bg-black/60 text-white px-2 py-1 rounded-full text-xs flex items-center space-x-1">

@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import { Edit3, MapPin, Star, Gift, Settings, Camera, Heart, Eye } from 'lucide-react';
 
-const ProfileTab = () => {
+interface ProfileTabProps {
+  fontSize?: string;
+  favoriteItems?: Set<number>;
+}
+
+const ProfileTab = ({ fontSize = 'sm', favoriteItems = new Set() }: ProfileTabProps) => {
   const [user, setUser] = useState({
     name: 'Jessica Thompson',
     location: 'Brooklyn, NY',
@@ -16,8 +21,8 @@ const ProfileTab = () => {
 
   const [isEditing, setIsEditing] = useState(false);
 
-  // Mock favorites data with proper clothing images
-  const favoriteListings = [
+  // All available listings (same as in FeedTab)
+  const allListings = [
     {
       id: 1,
       title: 'Vintage Denim Jacket',
@@ -53,14 +58,184 @@ const ProfileTab = () => {
         name: 'Emma Davis',
         avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face'
       }
+    },
+    {
+      id: 4,
+      title: 'Designer Jeans',
+      image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=400&fit=crop',
+      location: 'Bronx, NY',
+      size: 'M',
+      distance: 12,
+      contributor: {
+        name: 'Alex Rodriguez',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face'
+      }
+    },
+    {
+      id: 5,
+      title: 'Leather Ankle Boots',
+      image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=400&fit=crop',
+      location: 'Brooklyn, NY',
+      size: 'L',
+      distance: 3,
+      contributor: {
+        name: 'Jamie Kim',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face'
+      }
+    },
+    {
+      id: 6,
+      title: 'Silk Blouse',
+      image: 'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=400&h=400&fit=crop',
+      location: 'Manhattan, NY',
+      size: 'S',
+      distance: 6,
+      contributor: {
+        name: 'Lisa Park',
+        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face'
+      }
+    },
+    {
+      id: 7,
+      title: 'Wool Coat',
+      image: 'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=400&h=400&fit=crop',
+      location: 'Queens, NY',
+      size: 'M',
+      distance: 9,
+      contributor: {
+        name: 'David Wilson',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face'
+      }
+    },
+    {
+      id: 8,
+      title: 'Bohemian Skirt',
+      image: 'https://images.unsplash.com/photo-1583496661160-fb5886a13d77?w=400&h=400&fit=crop',
+      location: 'Brooklyn, NY',
+      size: 'L',
+      distance: 4,
+      contributor: {
+        name: 'Maria Garcia',
+        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face'
+      }
+    },
+    {
+      id: 9,
+      title: 'Athletic Shorts',
+      image: 'https://images.unsplash.com/photo-1506629905607-c60f40813d0d?w=400&h=400&fit=crop',
+      location: 'Bronx, NY',
+      size: 'M',
+      distance: 11,
+      contributor: {
+        name: 'Tom Brown',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face'
+      }
+    },
+    {
+      id: 10,
+      title: 'Vintage Band T-Shirt',
+      image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop',
+      location: 'Manhattan, NY',
+      size: 'L',
+      distance: 7,
+      contributor: {
+        name: 'Chris Lee',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face'
+      }
+    },
+    {
+      id: 11,
+      title: 'Formal Blazer',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
+      location: 'Brooklyn, NY',
+      size: 'M',
+      distance: 5,
+      contributor: {
+        name: 'Rachel Green',
+        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face'
+      }
+    },
+    {
+      id: 12,
+      title: 'Casual Chinos',
+      image: 'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=400&h=400&fit=crop',
+      location: 'Queens, NY',
+      size: 'L',
+      distance: 10,
+      contributor: {
+        name: 'Kevin Zhang',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face'
+      }
+    },
+    {
+      id: 13,
+      title: 'Statement Necklace',
+      image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=400&fit=crop',
+      location: 'Manhattan, NY',
+      size: 'S',
+      distance: 8,
+      contributor: {
+        name: 'Sophie Turner',
+        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face'
+      }
+    },
+    {
+      id: 14,
+      title: 'Running Sneakers',
+      image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop',
+      location: 'Bronx, NY',
+      size: 'M',
+      distance: 13,
+      contributor: {
+        name: 'Marcus Johnson',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face'
+      }
+    },
+    {
+      id: 15,
+      title: 'Maxi Dress',
+      image: 'https://images.unsplash.com/photo-1566479179817-c0b5b4b4b1e5?w=400&h=400&fit=crop',
+      location: 'Brooklyn, NY',
+      size: 'L',
+      distance: 6,
+      contributor: {
+        name: 'Anna Williams',
+        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face'
+      }
+    },
+    {
+      id: 16,
+      title: 'Cardigan Sweater',
+      image: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&h=400&fit=crop',
+      location: 'Queens, NY',
+      size: 'S',
+      distance: 9,
+      contributor: {
+        name: 'Jennifer Lopez',
+        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face'
+      }
     }
   ];
+
+  // Filter listings to show only favorited items
+  const favoriteListings = allListings.filter(listing => favoriteItems.has(listing.id));
 
   const recentActivity = [
     { type: 'shared', item: 'Vintage Denim Jacket', date: '2 days ago' },
     { type: 'received', item: 'Cozy Sweater', date: '1 week ago' },
     { type: 'shared', item: 'Summer Dress', date: '2 weeks ago' },
   ];
+
+  const getFontSizeClass = () => {
+    const fontSizeMap = {
+      xs: 'text-xs-accessible',
+      sm: 'text-sm-accessible', 
+      base: 'text-base-accessible',
+      lg: 'text-lg-accessible',
+      xl: 'text-xl-accessible'
+    };
+    return fontSizeMap[fontSize as keyof typeof fontSizeMap] || 'text-sm-accessible';
+  };
 
   return (
     <div className="h-full overflow-y-auto p-4">
@@ -78,21 +253,21 @@ const ProfileTab = () => {
             </button>
           </div>
           
-          <h2 className="text-xl font-bold text-gray-800 mb-1">{user.name}</h2>
+          <h2 className={`${getFontSizeClass()} text-xl font-bold text-gray-800 mb-1`}>{user.name}</h2>
           
           <div className="flex items-center space-x-1 text-gray-600 mb-3">
             <MapPin size={16} />
-            <span className="text-sm">{user.location}</span>
+            <span className={getFontSizeClass()}>{user.location}</span>
           </div>
           
-          <p className="text-sm text-gray-600 text-center mb-4">{user.bio}</p>
+          <p className={`${getFontSizeClass()} text-gray-600 text-center mb-4`}>{user.bio}</p>
           
           <button
             onClick={() => setIsEditing(!isEditing)}
             className="flex items-center space-x-2 px-4 py-2 bg-green-100 text-green-700 rounded-xl hover:bg-green-200 transition-colors"
           >
             <Edit3 size={16} />
-            <span className="text-sm font-medium">Edit Profile</span>
+            <span className={`${getFontSizeClass()} font-medium`}>Edit Profile</span>
           </button>
         </div>
       </div>
@@ -101,12 +276,12 @@ const ProfileTab = () => {
       <div className="grid grid-cols-3 gap-3 mb-4">
         <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 text-center">
           <div className="text-2xl font-bold text-green-600 mb-1">{user.stats.itemsShared}</div>
-          <div className="text-xs text-gray-600">Items Shared</div>
+          <div className={`${getFontSizeClass()} text-gray-600`}>Items Shared</div>
         </div>
         
         <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 text-center">
           <div className="text-2xl font-bold text-blue-600 mb-1">{user.stats.itemsReceived}</div>
-          <div className="text-xs text-gray-600">Items Received</div>
+          <div className={`${getFontSizeClass()} text-gray-600`}>Items Received</div>
         </div>
         
         <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 text-center">
@@ -114,7 +289,7 @@ const ProfileTab = () => {
             <Star size={16} className="text-yellow-500 fill-yellow-500" />
             <div className="text-2xl font-bold text-yellow-600">{user.stats.rating}</div>
           </div>
-          <div className="text-xs text-gray-600">Rating</div>
+          <div className={`${getFontSizeClass()} text-gray-600`}>Rating</div>
         </div>
       </div>
 
@@ -122,7 +297,7 @@ const ProfileTab = () => {
       <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 mb-4">
         <div className="flex items-center space-x-2 mb-3">
           <Heart size={20} className="text-red-500 fill-red-500" />
-          <h3 className="text-lg font-semibold text-gray-800">My Favorites</h3>
+          <h3 className={`${getFontSizeClass()} text-lg font-semibold text-gray-800`}>My Favorites</h3>
           <span className="bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs font-medium">
             {favoriteListings.length}
           </span>
@@ -138,8 +313,8 @@ const ProfileTab = () => {
                   className="w-16 h-16 rounded-lg object-cover"
                 />
                 <div className="flex-1 min-w-0">
-                  <h4 className="text-sm font-semibold text-gray-800 truncate">{listing.title}</h4>
-                  <p className="text-xs text-gray-600 mb-1">{listing.location} • {listing.distance}mi away</p>
+                  <h4 className={`${getFontSizeClass()} font-semibold text-gray-800 truncate`}>{listing.title}</h4>
+                  <p className={`${getFontSizeClass()} text-gray-600 mb-1`}>{listing.location} • {listing.distance}mi away</p>
                   <div className="flex items-center justify-between">
                     <span className="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">
                       Size {listing.size}
@@ -155,15 +330,15 @@ const ProfileTab = () => {
         ) : (
           <div className="text-center py-8">
             <Heart size={48} className="text-gray-300 mx-auto mb-3" />
-            <p className="text-gray-500 text-sm">No favorites yet</p>
-            <p className="text-gray-400 text-xs mt-1">Heart items you love to save them here!</p>
+            <p className={`${getFontSizeClass()} text-gray-500`}>No favorites yet</p>
+            <p className={`${getFontSizeClass()} text-gray-400 mt-1`}>Heart items you love to save them here!</p>
           </div>
         )}
       </div>
 
       {/* Recent Activity */}
       <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 mb-4">
-        <h3 className="text-lg font-semibold text-gray-800 mb-3">Recent Activity</h3>
+        <h3 className={`${getFontSizeClass()} text-lg font-semibold text-gray-800 mb-3`}>Recent Activity</h3>
         <div className="space-y-3">
           {recentActivity.map((activity, index) => (
             <div key={index} className="flex items-center space-x-3">
@@ -175,10 +350,10 @@ const ProfileTab = () => {
                 } />
               </div>
               <div className="flex-1">
-                <p className="text-sm font-medium text-gray-800">
+                <p className={`${getFontSizeClass()} font-medium text-gray-800`}>
                   {activity.type === 'shared' ? 'Shared' : 'Received'}: {activity.item}
                 </p>
-                <p className="text-xs text-gray-500">{activity.date}</p>
+                <p className={`${getFontSizeClass()} text-gray-500`}>{activity.date}</p>
               </div>
             </div>
           ))}
@@ -187,7 +362,7 @@ const ProfileTab = () => {
 
       {/* Settings */}
       <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
-        <h3 className="text-lg font-semibold text-gray-800 mb-3">Settings</h3>
+        <h3 className={`${getFontSizeClass()} text-lg font-semibold text-gray-800 mb-3`}>Settings</h3>
         <div className="space-y-2">
           {[
             'Account Settings',
@@ -200,7 +375,7 @@ const ProfileTab = () => {
               key={index}
               className="w-full flex items-center justify-between p-3 hover:bg-gray-50 rounded-xl transition-colors"
             >
-              <span className="text-sm text-gray-700">{setting}</span>
+              <span className={`${getFontSizeClass()} text-gray-700`}>{setting}</span>
               <Settings size={16} className="text-gray-400" />
             </button>
           ))}
