@@ -1,31 +1,44 @@
 import { useState } from 'react';
-import { Edit3, MapPin, Star, Gift, Settings, Camera } from 'lucide-react';
+import { Edit3, MapPin, Star, Gift, Settings, Camera, Eye } from 'lucide-react';
+import ListingModal from './ListingModal';
 
 interface ProfileTabProps {
   fontSize?: string;
   favoriteItems?: Set<number>;
+  userContributions?: any[];
 }
 
-const ProfileTab = ({ fontSize = 'sm', favoriteItems = new Set() }: ProfileTabProps) => {
+const ProfileTab = ({ fontSize = 'sm', favoriteItems = new Set(), userContributions = [] }: ProfileTabProps) => {
   const [user, setUser] = useState({
     name: 'Jessica Thompson',
     location: 'Brooklyn, NY',
     avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=200&h=200&fit=crop&crop=face',
     bio: 'Sustainable fashion lover sharing preloved clothes with the community! 🌱',
     stats: {
-      itemsContributed: 23,
+      itemsContributed: 23 + userContributions.length, // Update count with new contributions
       itemsCollected: 15,
       rating: 4.9
     }
   });
 
   const [isEditing, setIsEditing] = useState(false);
+  const [selectedListing, setSelectedListing] = useState(null);
 
-  const recentActivity = [
-    { type: 'contributed', item: 'Vintage Denim Jacket', date: '2 days ago' },
+  // Combine user contributions with mock recent activity
+  const mockActivity = [
     { type: 'collected', item: 'Cozy Sweater', date: '1 week ago' },
     { type: 'contributed', item: 'Summer Dress', date: '2 weeks ago' },
   ];
+
+  // Create recent activity from user contributions
+  const contributionActivity = userContributions.map(contribution => ({
+    type: 'contributed',
+    item: contribution.title,
+    date: 'Just now',
+    listing: contribution // Store the full listing data
+  }));
+
+  const recentActivity = [...contributionActivity, ...mockActivity];
 
   const getFontSizeClass = () => {
     const fontSizeMap = {
@@ -36,6 +49,12 @@ const ProfileTab = ({ fontSize = 'sm', favoriteItems = new Set() }: ProfileTabPr
       xl: 'text-xl-accessible'
     };
     return fontSizeMap[fontSize as keyof typeof fontSizeMap] || 'text-sm-accessible';
+  };
+
+  const handleActivityClick = (activity) => {
+    if (activity.listing) {
+      setSelectedListing(activity.listing);
+    }
   };
 
   return (
@@ -99,7 +118,11 @@ const ProfileTab = ({ fontSize = 'sm', favoriteItems = new Set() }: ProfileTabPr
         <h3 className={`${getFontSizeClass()} text-lg font-semibold text-gray-800 mb-3`}>Recent Activity</h3>
         <div className="space-y-3">
           {recentActivity.map((activity, index) => (
-            <div key={index} className="flex items-center space-x-3">
+            <div 
+              key={index} 
+              className={`flex items-center space-x-3 ${activity.listing ? 'cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition-colors' : ''}`}
+              onClick={() => handleActivityClick(activity)}
+            >
               <div className={`p-2 rounded-full ${
                 activity.type === 'contributed' ? 'bg-green-100' : 'bg-blue-100'
               }`}>
@@ -113,6 +136,9 @@ const ProfileTab = ({ fontSize = 'sm', favoriteItems = new Set() }: ProfileTabPr
                 </p>
                 <p className={`${getFontSizeClass()} text-gray-500`}>{activity.date}</p>
               </div>
+              {activity.listing && (
+                <Eye size={16} className="text-gray-400" />
+              )}
             </div>
           ))}
         </div>
@@ -139,6 +165,17 @@ const ProfileTab = ({ fontSize = 'sm', favoriteItems = new Set() }: ProfileTabPr
           ))}
         </div>
       </div>
+
+      {/* Listing Modal */}
+      {selectedListing && (
+        <ListingModal
+          listing={selectedListing}
+          onClose={() => setSelectedListing(null)}
+          isBookmarked={false}
+          onToggleBookmark={() => {}}
+          fontSize={fontSize}
+        />
+      )}
     </div>
   );
 };

@@ -12,6 +12,7 @@ const Index = () => {
   const [fontSize, setFontSize] = useState('sm');
   const [chatContext, setChatContext] = useState(null);
   const [favoriteItems, setFavoriteItems] = useState(new Set());
+  const [userContributions, setUserContributions] = useState([]);
 
   const tabs = [
     { id: 'feed', icon: Heart, label: 'Feed', component: FeedTab },
@@ -35,6 +36,27 @@ const Index = () => {
       newFavorites.add(itemId);
     }
     setFavoriteItems(newFavorites);
+  };
+
+  const handleContributionSubmit = (contributionData) => {
+    // Create a new contribution with unique ID and timestamp
+    const newContribution = {
+      id: Date.now(),
+      ...contributionData,
+      dateContributed: new Date(),
+      contributor: {
+        name: 'Jessica Thompson', // Current user name
+        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face',
+        rating: 4.9,
+        totalDonations: 24 // Increment from current 23
+      }
+    };
+
+    // Add to user contributions
+    setUserContributions(prev => [newContribution, ...prev]);
+    
+    // Switch to profile tab to show the new contribution
+    setActiveTab('profile');
   };
 
   const ActiveComponent = tabs.find(tab => tab.id === activeTab)?.component || FeedTab;
@@ -61,7 +83,16 @@ const Index = () => {
         ) : activeTab === 'chat' ? (
           <ChatTab fontSize={fontSize} chatContext={chatContext} />
         ) : activeTab === 'profile' ? (
-          <ProfileTab fontSize={fontSize} favoriteItems={favoriteItems} />
+          <ProfileTab 
+            fontSize={fontSize} 
+            favoriteItems={favoriteItems}
+            userContributions={userContributions}
+          />
+        ) : activeTab === 'contribute' ? (
+          <ContributeTab 
+            fontSize={fontSize}
+            onContributionSubmit={handleContributionSubmit}
+          />
         ) : (
           <ActiveComponent fontSize={fontSize} />
         )}
