@@ -14,9 +14,9 @@ const queryClient = new QueryClient();
 
 const App = () => {
   const [currentStep, setCurrentStep] = useState<'signup' | 'payment' | 'verification' | 'app'>('signup');
-  const [userData, setUserData] = useState<{ name: string; zipcode: string } | null>(null);
+  const [userData, setUserData] = useState<{ name: string; email: string; phone: string; zipcode: string } | null>(null);
 
-  const handleSignUpComplete = (data: { name: string; zipcode: string }) => {
+  const handleSignUpComplete = (data: { name: string; email: string; phone: string; zipcode: string }) => {
     setUserData(data);
     setCurrentStep('payment');
   };

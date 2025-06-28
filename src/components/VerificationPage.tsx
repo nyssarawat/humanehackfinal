@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Shield, Clock, CheckCircle, ArrowRight } from 'lucide-react';
 
 interface VerificationPageProps {
-  userData: { name: string; zipcode: string };
+  userData: { name: string; email: string; phone: string; zipcode: string };
   onEnterApp: () => void;
 }
 
@@ -31,6 +31,17 @@ const VerificationPage = ({ userData, onEnterApp }: VerificationPageProps) => {
           Thank you {userData.name.split(' ')[0]}, your membership is being processed.
         </p>
 
+        {/* User Info Summary */}
+        <div className="bg-gray-50 p-4 rounded-xl mb-6">
+          <h3 className="font-medium text-gray-800 mb-2">Your Information</h3>
+          <div className="space-y-1 text-sm text-gray-600">
+            <p><strong>Name:</strong> {userData.name}</p>
+            <p><strong>Email:</strong> {userData.email}</p>
+            <p><strong>Phone:</strong> {userData.phone}</p>
+            <p><strong>Location:</strong> {userData.zipcode}</p>
+          </div>
+        </div>
+
         {/* Verification Status */}
         <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-6 mb-8">
           <div className="flex items-center justify-center space-x-3 mb-4">
@@ -58,7 +69,7 @@ const VerificationPage = ({ userData, onEnterApp }: VerificationPageProps) => {
             </div>
             <div className="flex items-start space-x-3">
               <div className="w-6 h-6 bg-[#36723f] text-white rounded-full flex items-center justify-center text-xs font-bold mt-0.5">2</div>
-              <p className="text-sm text-gray-600">You'll receive an email confirmation once approved</p>
+              <p className="text-sm text-gray-600">You'll receive an email confirmation at {userData.email}</p>
             </div>
             <div className="flex items-start space-x-3">
               <div className="w-6 h-6 bg-[#36723f] text-white rounded-full flex items-center justify-center text-xs font-bold mt-0.5">3</div>

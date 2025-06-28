@@ -1,22 +1,26 @@
 import { useState } from 'react';
-import { User, MapPin, ArrowRight } from 'lucide-react';
+import { User, MapPin, ArrowRight, Mail, Phone } from 'lucide-react';
 
 interface SignUpPageProps {
-  onSignUpComplete: (userData: { name: string; zipcode: string }) => void;
+  onSignUpComplete: (userData: { name: string; email: string; phone: string; zipcode: string }) => void;
 }
 
 const SignUpPage = ({ onSignUpComplete }: SignUpPageProps) => {
   const [formData, setFormData] = useState({
     name: '',
+    email: '',
+    phone: '',
     zipcode: ''
   });
   const [errors, setErrors] = useState({
     name: '',
+    email: '',
+    phone: '',
     zipcode: ''
   });
 
   const validateForm = () => {
-    const newErrors = { name: '', zipcode: '' };
+    const newErrors = { name: '', email: '', phone: '', zipcode: '' };
     let isValid = true;
 
     // Validate name (at least 2 words)
@@ -26,6 +30,26 @@ const SignUpPage = ({ onSignUpComplete }: SignUpPageProps) => {
       isValid = false;
     } else if (nameParts.length < 2) {
       newErrors.name = 'Please enter your first and last name';
+      isValid = false;
+    }
+
+    // Validate email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim()) {
+      newErrors.email = 'Please enter your email address';
+      isValid = false;
+    } else if (!emailRegex.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+      isValid = false;
+    }
+
+    // Validate phone number (US format)
+    const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Please enter your phone number';
+      isValid = false;
+    } else if (!phoneRegex.test(formData.phone.replace(/\D/g, ''))) {
+      newErrors.phone = 'Please enter a valid 10-digit phone number';
       isValid = false;
     }
 
@@ -55,6 +79,20 @@ const SignUpPage = ({ onSignUpComplete }: SignUpPageProps) => {
     // Clear error when user starts typing
     if (errors[field as keyof typeof errors]) {
       setErrors(prev => ({ ...prev, [field]: '' }));
+    }
+  };
+
+  const formatPhoneNumber = (value: string) => {
+    // Remove all non-digits
+    const phoneNumber = value.replace(/\D/g, '');
+    
+    // Format as (XXX) XXX-XXXX
+    if (phoneNumber.length >= 6) {
+      return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
+    } else if (phoneNumber.length >= 3) {
+      return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+    } else {
+      return phoneNumber;
     }
   };
 
@@ -91,6 +129,51 @@ const SignUpPage = ({ onSignUpComplete }: SignUpPageProps) => {
             </div>
             {errors.name && (
               <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+            )}
+          </div>
+
+          {/* Email */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Email Address *
+            </label>
+            <div className="relative">
+              <Mail size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <input
+                type="email"
+                value={formData.email}
+                onChange={(e) => handleInputChange('email', e.target.value)}
+                placeholder="Enter your email address"
+                className={`w-full pl-10 pr-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#36723f] focus:border-transparent transition-colors ${
+                  errors.email ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                }`}
+              />
+            </div>
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+            )}
+          </div>
+
+          {/* Phone Number */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Phone Number *
+            </label>
+            <div className="relative">
+              <Phone size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <input
+                type="tel"
+                value={formData.phone}
+                onChange={(e) => handleInputChange('phone', formatPhoneNumber(e.target.value))}
+                placeholder="(555) 123-4567"
+                maxLength={14}
+                className={`w-full pl-10 pr-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#36723f] focus:border-transparent transition-colors ${
+                  errors.phone ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                }`}
+              />
+            </div>
+            {errors.phone && (
+              <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
             )}
           </div>
 

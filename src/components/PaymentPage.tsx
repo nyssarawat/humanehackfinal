@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { CreditCard, Smartphone, DollarSign, Shield, ArrowLeft, Check } from 'lucide-react';
 
 interface PaymentPageProps {
-  userData: { name: string; zipcode: string };
+  userData: { name: string; email: string; phone: string; zipcode: string };
   onPaymentComplete: () => void;
   onBack: () => void;
 }
@@ -93,6 +93,17 @@ const PaymentPage = ({ userData, onPaymentComplete, onBack }: PaymentPageProps) 
           <div className="flex-1">
             <h1 className="text-2xl font-bold text-[#36723f]">Complete Payment</h1>
             <p className="text-gray-600 text-sm">Hi {userData.name.split(' ')[0]}!</p>
+          </div>
+        </div>
+
+        {/* User Info Summary */}
+        <div className="bg-gray-50 p-4 rounded-xl mb-6">
+          <h3 className="font-medium text-gray-800 mb-2">Account Information</h3>
+          <div className="space-y-1 text-sm text-gray-600">
+            <p><strong>Name:</strong> {userData.name}</p>
+            <p><strong>Email:</strong> {userData.email}</p>
+            <p><strong>Phone:</strong> {userData.phone}</p>
+            <p><strong>Location:</strong> {userData.zipcode}</p>
           </div>
         </div>
 
