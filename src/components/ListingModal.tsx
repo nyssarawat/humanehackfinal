@@ -142,7 +142,7 @@ const ListingModal = ({ listing, onClose, isBookmarked, onToggleBookmark, fontSi
             
             <button
               onClick={handleInterest}
-              className={`w-full flex items-center justify-center space-x-2 bg-[#36723f] text-white py-3 rounded-xl font-medium hover:bg-[#36723f] hover:bg-opacity-90 transition-colors ${getFontSizeClass()}`}
+              className={`w-full flex items-center justify-center space-x-2 bg-[#bad3de] text-[#132c0b] py-3 rounded-xl font-medium hover:bg-[#a8c8d4] transition-colors ${getFontSizeClass()}`}
             >
               <MessageCircle size={20} />
               <span>I'm Interested!</span>

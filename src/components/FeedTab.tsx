@@ -21,8 +21,9 @@ const FeedTab = ({ fontSize = 'sm', onNavigateToChat }: FeedTabProps) => {
     showFavoritesOnly: false
   });
 
-  // Mock data for clothing listings with contributor information and proper images
+  // Expanded mock data for clothing listings with 80+ items across multiple pages
   const mockListings = [
+    // Page 1 (1-16)
     {
       id: 1,
       title: 'Vintage Denim Jacket',
@@ -294,6 +295,1098 @@ const FeedTab = ({ fontSize = 'sm', onNavigateToChat }: FeedTabProps) => {
         rating: 4.8,
         totalDonations: 28
       }
+    },
+    // Page 2 (17-32)
+    {
+      id: 17,
+      title: 'Striped Polo Shirt',
+      image: 'https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=400&h=400&fit=crop',
+      location: 'Manhattan, NY',
+      size: 'M',
+      style: 'Casual',
+      color: 'Blue',
+      type: 'Shirt',
+      distance: 4,
+      contributor: {
+        name: 'Robert Kim',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+        rating: 4.6,
+        totalDonations: 17
+      }
+    },
+    {
+      id: 18,
+      title: 'Pleated Mini Skirt',
+      image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=400&fit=crop',
+      location: 'Brooklyn, NY',
+      size: 'S',
+      style: 'Trendy',
+      color: 'Black',
+      type: 'Skirt',
+      distance: 7,
+      contributor: {
+        name: 'Olivia Martinez',
+        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+        rating: 4.7,
+        totalDonations: 21
+      }
+    },
+    {
+      id: 19,
+      title: 'Denim Overalls',
+      image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=400&fit=crop',
+      location: 'Queens, NY',
+      size: 'L',
+      style: 'Casual',
+      color: 'Blue',
+      type: 'Pants',
+      distance: 11,
+      contributor: {
+        name: 'Tyler Johnson',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
+        rating: 4.5,
+        totalDonations: 13
+      }
+    },
+    {
+      id: 20,
+      title: 'Cashmere Scarf',
+      image: 'https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=400&h=400&fit=crop',
+      location: 'Manhattan, NY',
+      size: 'S',
+      style: 'Formal',
+      color: 'Gray',
+      type: 'Accessories',
+      distance: 5,
+      contributor: {
+        name: 'Grace Chen',
+        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face',
+        rating: 4.9,
+        totalDonations: 29
+      }
+    },
+    {
+      id: 21,
+      title: 'Hiking Boots',
+      image: 'https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?w=400&h=400&fit=crop',
+      location: 'Bronx, NY',
+      size: 'M',
+      style: 'Sporty',
+      color: 'Brown',
+      type: 'Shoes',
+      distance: 14,
+      contributor: {
+        name: 'Daniel Park',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+        rating: 4.4,
+        totalDonations: 11
+      }
+    },
+    {
+      id: 22,
+      title: 'Wrap Dress',
+      image: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=400&fit=crop',
+      location: 'Brooklyn, NY',
+      size: 'M',
+      style: 'Formal',
+      color: 'Red',
+      type: 'Dress',
+      distance: 6,
+      contributor: {
+        name: 'Isabella Rodriguez',
+        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+        rating: 4.8,
+        totalDonations: 26
+      }
+    },
+    {
+      id: 23,
+      title: 'Bomber Jacket',
+      image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=400&fit=crop',
+      location: 'Queens, NY',
+      size: 'L',
+      style: 'Trendy',
+      color: 'Green',
+      type: 'Jacket',
+      distance: 9,
+      contributor: {
+        name: 'Nathan Lee',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
+        rating: 4.6,
+        totalDonations: 18
+      }
+    },
+    {
+      id: 24,
+      title: 'Yoga Leggings',
+      image: 'https://images.unsplash.com/photo-1506629905607-c60f40813d0d?w=400&h=400&fit=crop',
+      location: 'Manhattan, NY',
+      size: 'S',
+      style: 'Sporty',
+      color: 'Black',
+      type: 'Pants',
+      distance: 3,
+      contributor: {
+        name: 'Sophia Wang',
+        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face',
+        rating: 4.7,
+        totalDonations: 22
+      }
+    },
+    {
+      id: 25,
+      title: 'Flannel Shirt',
+      image: 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400&h=400&fit=crop',
+      location: 'Brooklyn, NY',
+      size: 'M',
+      style: 'Casual',
+      color: 'Red',
+      type: 'Shirt',
+      distance: 8,
+      contributor: {
+        name: 'Ethan Brown',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+        rating: 4.5,
+        totalDonations: 15
+      }
+    },
+    {
+      id: 26,
+      title: 'Pencil Skirt',
+      image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=400&fit=crop',
+      location: 'Queens, NY',
+      size: 'S',
+      style: 'Formal',
+      color: 'Black',
+      type: 'Skirt',
+      distance: 12,
+      contributor: {
+        name: 'Ava Davis',
+        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+        rating: 4.8,
+        totalDonations: 24
+      }
+    },
+    {
+      id: 27,
+      title: 'Canvas Sneakers',
+      image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop',
+      location: 'Bronx, NY',
+      size: 'L',
+      style: 'Casual',
+      color: 'White',
+      type: 'Shoes',
+      distance: 15,
+      contributor: {
+        name: 'Lucas Martinez',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
+        rating: 4.4,
+        totalDonations: 10
+      }
+    },
+    {
+      id: 28,
+      title: 'Turtleneck Sweater',
+      image: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&h=400&fit=crop',
+      location: 'Manhattan, NY',
+      size: 'M',
+      style: 'Formal',
+      color: 'Gray',
+      type: 'Sweater',
+      distance: 4,
+      contributor: {
+        name: 'Mia Thompson',
+        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face',
+        rating: 4.9,
+        totalDonations: 32
+      }
+    },
+    {
+      id: 29,
+      title: 'Cargo Pants',
+      image: 'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=400&h=400&fit=crop',
+      location: 'Brooklyn, NY',
+      size: 'L',
+      style: 'Casual',
+      color: 'Green',
+      type: 'Pants',
+      distance: 7,
+      contributor: {
+        name: 'Jackson Wilson',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+        rating: 4.6,
+        totalDonations: 19
+      }
+    },
+    {
+      id: 30,
+      title: 'Cocktail Dress',
+      image: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=400&fit=crop',
+      location: 'Queens, NY',
+      size: 'S',
+      style: 'Formal',
+      color: 'Purple',
+      type: 'Dress',
+      distance: 10,
+      contributor: {
+        name: 'Charlotte Garcia',
+        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+        rating: 4.7,
+        totalDonations: 23
+      }
+    },
+    {
+      id: 31,
+      title: 'Baseball Cap',
+      image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400&h=400&fit=crop',
+      location: 'Manhattan, NY',
+      size: 'M',
+      style: 'Casual',
+      color: 'Blue',
+      type: 'Accessories',
+      distance: 6,
+      contributor: {
+        name: 'Aiden Kim',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
+        rating: 4.5,
+        totalDonations: 14
+      }
+    },
+    {
+      id: 32,
+      title: 'Trench Coat',
+      image: 'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=400&h=400&fit=crop',
+      location: 'Bronx, NY',
+      size: 'M',
+      style: 'Formal',
+      color: 'Brown',
+      type: 'Jacket',
+      distance: 13,
+      contributor: {
+        name: 'Harper Lee',
+        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face',
+        rating: 4.8,
+        totalDonations: 27
+      }
+    },
+    // Page 3 (33-48)
+    {
+      id: 33,
+      title: 'Graphic Hoodie',
+      image: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&h=400&fit=crop',
+      location: 'Brooklyn, NY',
+      size: 'L',
+      style: 'Casual',
+      color: 'Gray',
+      type: 'Sweater',
+      distance: 5,
+      contributor: {
+        name: 'Mason Davis',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+        rating: 4.6,
+        totalDonations: 16
+      }
+    },
+    {
+      id: 34,
+      title: 'High Heels',
+      image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&h=400&fit=crop',
+      location: 'Manhattan, NY',
+      size: 'S',
+      style: 'Formal',
+      color: 'Black',
+      type: 'Shoes',
+      distance: 3,
+      contributor: {
+        name: 'Ella Rodriguez',
+        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+        rating: 4.9,
+        totalDonations: 30
+      }
+    },
+    {
+      id: 35,
+      title: 'Denim Shorts',
+      image: 'https://images.unsplash.com/photo-1506629905607-c60f40813d0d?w=400&h=400&fit=crop',
+      location: 'Queens, NY',
+      size: 'M',
+      style: 'Casual',
+      color: 'Blue',
+      type: 'Shorts',
+      distance: 9,
+      contributor: {
+        name: 'Logan Wilson',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
+        rating: 4.4,
+        totalDonations: 12
+      }
+    },
+    {
+      id: 36,
+      title: 'Silk Scarf',
+      image: 'https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=400&h=400&fit=crop',
+      location: 'Brooklyn, NY',
+      size: 'S',
+      style: 'Formal',
+      color: 'Red',
+      type: 'Accessories',
+      distance: 8,
+      contributor: {
+        name: 'Avery Chen',
+        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face',
+        rating: 4.7,
+        totalDonations: 21
+      }
+    },
+    {
+      id: 37,
+      title: 'Windbreaker',
+      image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=400&fit=crop',
+      location: 'Bronx, NY',
+      size: 'L',
+      style: 'Sporty',
+      color: 'Yellow',
+      type: 'Jacket',
+      distance: 14,
+      contributor: {
+        name: 'Carter Martinez',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+        rating: 4.5,
+        totalDonations: 13
+      }
+    },
+    {
+      id: 38,
+      title: 'Midi Skirt',
+      image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=400&fit=crop',
+      location: 'Manhattan, NY',
+      size: 'M',
+      style: 'Trendy',
+      color: 'Pink',
+      type: 'Skirt',
+      distance: 4,
+      contributor: {
+        name: 'Luna Park',
+        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+        rating: 4.8,
+        totalDonations: 25
+      }
+    },
+    {
+      id: 39,
+      title: 'Loafers',
+      image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=400&fit=crop',
+      location: 'Queens, NY',
+      size: 'M',
+      style: 'Formal',
+      color: 'Brown',
+      type: 'Shoes',
+      distance: 11,
+      contributor: {
+        name: 'Nova Kim',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
+        rating: 4.6,
+        totalDonations: 17
+      }
+    },
+    {
+      id: 40,
+      title: 'Tank Top',
+      image: 'https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=400&h=400&fit=crop',
+      location: 'Brooklyn, NY',
+      size: 'S',
+      style: 'Casual',
+      color: 'White',
+      type: 'Shirt',
+      distance: 6,
+      contributor: {
+        name: 'Kai Johnson',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+        rating: 4.4,
+        totalDonations: 11
+      }
+    },
+    {
+      id: 41,
+      title: 'Puffer Vest',
+      image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=400&fit=crop',
+      location: 'Manhattan, NY',
+      size: 'L',
+      style: 'Sporty',
+      color: 'Black',
+      type: 'Jacket',
+      distance: 7,
+      contributor: {
+        name: 'River Davis',
+        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face',
+        rating: 4.7,
+        totalDonations: 20
+      }
+    },
+    {
+      id: 42,
+      title: 'Sundress',
+      image: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=400&fit=crop',
+      location: 'Bronx, NY',
+      size: 'M',
+      style: 'Casual',
+      color: 'Yellow',
+      type: 'Dress',
+      distance: 12,
+      contributor: {
+        name: 'Sage Wilson',
+        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+        rating: 4.8,
+        totalDonations: 26
+      }
+    },
+    {
+      id: 43,
+      title: 'Beanie Hat',
+      image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400&h=400&fit=crop',
+      location: 'Queens, NY',
+      size: 'S',
+      style: 'Casual',
+      color: 'Gray',
+      type: 'Accessories',
+      distance: 10,
+      contributor: {
+        name: 'Phoenix Lee',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
+        rating: 4.5,
+        totalDonations: 14
+      }
+    },
+    {
+      id: 44,
+      title: 'Sweatpants',
+      image: 'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=400&h=400&fit=crop',
+      location: 'Brooklyn, NY',
+      size: 'L',
+      style: 'Casual',
+      color: 'Gray',
+      type: 'Pants',
+      distance: 5,
+      contributor: {
+        name: 'Rowan Chen',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+        rating: 4.6,
+        totalDonations: 18
+      }
+    },
+    {
+      id: 45,
+      title: 'Blazer Dress',
+      image: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=400&fit=crop',
+      location: 'Manhattan, NY',
+      size: 'S',
+      style: 'Formal',
+      color: 'Black',
+      type: 'Dress',
+      distance: 3,
+      contributor: {
+        name: 'Skylar Rodriguez',
+        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+        rating: 4.9,
+        totalDonations: 31
+      }
+    },
+    {
+      id: 46,
+      title: 'Flip Flops',
+      image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop',
+      location: 'Queens, NY',
+      size: 'M',
+      style: 'Casual',
+      color: 'Blue',
+      type: 'Shoes',
+      distance: 9,
+      contributor: {
+        name: 'Indigo Martinez',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
+        rating: 4.4,
+        totalDonations: 10
+      }
+    },
+    {
+      id: 47,
+      title: 'Crop Top',
+      image: 'https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=400&h=400&fit=crop',
+      location: 'Bronx, NY',
+      size: 'S',
+      style: 'Trendy',
+      color: 'Pink',
+      type: 'Shirt',
+      distance: 13,
+      contributor: {
+        name: 'Violet Kim',
+        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face',
+        rating: 4.7,
+        totalDonations: 22
+      }
+    },
+    {
+      id: 48,
+      title: 'Leather Jacket',
+      image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=400&fit=crop',
+      location: 'Brooklyn, NY',
+      size: 'M',
+      style: 'Vintage',
+      color: 'Black',
+      type: 'Jacket',
+      distance: 7,
+      contributor: {
+        name: 'Orion Park',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+        rating: 4.8,
+        totalDonations: 24
+      }
+    },
+    // Page 4 (49-64)
+    {
+      id: 49,
+      title: 'Polo Dress',
+      image: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=400&fit=crop',
+      location: 'Manhattan, NY',
+      size: 'L',
+      style: 'Casual',
+      color: 'Green',
+      type: 'Dress',
+      distance: 4,
+      contributor: {
+        name: 'Aspen Wilson',
+        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+        rating: 4.6,
+        totalDonations: 19
+      }
+    },
+    {
+      id: 50,
+      title: 'Combat Boots',
+      image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=400&fit=crop',
+      location: 'Queens, NY',
+      size: 'M',
+      style: 'Trendy',
+      color: 'Black',
+      type: 'Shoes',
+      distance: 11,
+      contributor: {
+        name: 'Sage Thompson',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
+        rating: 4.5,
+        totalDonations: 15
+      }
+    },
+    {
+      id: 51,
+      title: 'Henley Shirt',
+      image: 'https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=400&h=400&fit=crop',
+      location: 'Brooklyn, NY',
+      size: 'L',
+      style: 'Casual',
+      color: 'White',
+      type: 'Shirt',
+      distance: 6,
+      contributor: {
+        name: 'River Garcia',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+        rating: 4.7,
+        totalDonations: 21
+      }
+    },
+    {
+      id: 52,
+      title: 'Wide Leg Pants',
+      image: 'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=400&h=400&fit=crop',
+      location: 'Bronx, NY',
+      size: 'S',
+      style: 'Trendy',
+      color: 'Brown',
+      type: 'Pants',
+      distance: 14,
+      contributor: {
+        name: 'Ocean Lee',
+        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face',
+        rating: 4.8,
+        totalDonations: 27
+      }
+    },
+    {
+      id: 53,
+      title: 'Bucket Hat',
+      image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400&h=400&fit=crop',
+      location: 'Manhattan, NY',
+      size: 'M',
+      style: 'Casual',
+      color: 'Yellow',
+      type: 'Accessories',
+      distance: 5,
+      contributor: {
+        name: 'Storm Davis',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
+        rating: 4.4,
+        totalDonations: 12
+      }
+    },
+    {
+      id: 54,
+      title: 'Bodysuit',
+      image: 'https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=400&h=400&fit=crop',
+      location: 'Queens, NY',
+      size: 'S',
+      style: 'Trendy',
+      color: 'Black',
+      type: 'Shirt',
+      distance: 10,
+      contributor: {
+        name: 'Aurora Martinez',
+        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+        rating: 4.9,
+        totalDonations: 33
+      }
+    },
+    {
+      id: 55,
+      title: 'Pea Coat',
+      image: 'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=400&h=400&fit=crop',
+      location: 'Brooklyn, NY',
+      size: 'M',
+      style: 'Formal',
+      color: 'Navy',
+      type: 'Jacket',
+      distance: 8,
+      contributor: {
+        name: 'Blaze Kim',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+        rating: 4.6,
+        totalDonations: 18
+      }
+    },
+    {
+      id: 56,
+      title: 'Slip Dress',
+      image: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=400&fit=crop',
+      location: 'Manhattan, NY',
+      size: 'L',
+      style: 'Formal',
+      color: 'Silver',
+      type: 'Dress',
+      distance: 3,
+      contributor: {
+        name: 'Echo Rodriguez',
+        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face',
+        rating: 4.8,
+        totalDonations: 25
+      }
+    },
+    {
+      id: 57,
+      title: 'Oxford Shoes',
+      image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=400&fit=crop',
+      location: 'Bronx, NY',
+      size: 'M',
+      style: 'Formal',
+      color: 'Brown',
+      type: 'Shoes',
+      distance: 12,
+      contributor: {
+        name: 'Zephyr Wilson',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
+        rating: 4.5,
+        totalDonations: 16
+      }
+    },
+    {
+      id: 58,
+      title: 'Mesh Top',
+      image: 'https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=400&h=400&fit=crop',
+      location: 'Queens, NY',
+      size: 'S',
+      style: 'Trendy',
+      color: 'Black',
+      type: 'Shirt',
+      distance: 9,
+      contributor: {
+        name: 'Iris Chen',
+        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+        rating: 4.7,
+        totalDonations: 23
+      }
+    },
+    {
+      id: 59,
+      title: 'Track Jacket',
+      image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=400&fit=crop',
+      location: 'Brooklyn, NY',
+      size: 'L',
+      style: 'Sporty',
+      color: 'Blue',
+      type: 'Jacket',
+      distance: 7,
+      contributor: {
+        name: 'Atlas Park',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+        rating: 4.6,
+        totalDonations: 20
+      }
+    },
+    {
+      id: 60,
+      title: 'Tulle Skirt',
+      image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=400&fit=crop',
+      location: 'Manhattan, NY',
+      size: 'M',
+      style: 'Formal',
+      color: 'Pink',
+      type: 'Skirt',
+      distance: 4,
+      contributor: {
+        name: 'Nova Johnson',
+        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face',
+        rating: 4.9,
+        totalDonations: 29
+      }
+    },
+    {
+      id: 61,
+      title: 'Espadrilles',
+      image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop',
+      location: 'Queens, NY',
+      size: 'S',
+      style: 'Casual',
+      color: 'Brown',
+      type: 'Shoes',
+      distance: 11,
+      contributor: {
+        name: 'Sage Martinez',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
+        rating: 4.4,
+        totalDonations: 13
+      }
+    },
+    {
+      id: 62,
+      title: 'Utility Vest',
+      image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=400&fit=crop',
+      location: 'Bronx, NY',
+      size: 'L',
+      style: 'Casual',
+      color: 'Green',
+      type: 'Jacket',
+      distance: 13,
+      contributor: {
+        name: 'River Lee',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+        rating: 4.7,
+        totalDonations: 22
+      }
+    },
+    {
+      id: 63,
+      title: 'Halter Top',
+      image: 'https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=400&h=400&fit=crop',
+      location: 'Brooklyn, NY',
+      size: 'S',
+      style: 'Trendy',
+      color: 'Red',
+      type: 'Shirt',
+      distance: 6,
+      contributor: {
+        name: 'Phoenix Davis',
+        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+        rating: 4.8,
+        totalDonations: 26
+      }
+    },
+    {
+      id: 64,
+      title: 'Peacoat',
+      image: 'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=400&h=400&fit=crop',
+      location: 'Manhattan, NY',
+      size: 'M',
+      style: 'Formal',
+      color: 'Black',
+      type: 'Jacket',
+      distance: 5,
+      contributor: {
+        name: 'Luna Rodriguez',
+        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face',
+        rating: 4.9,
+        totalDonations: 31
+      }
+    },
+    // Page 5 (65-80)
+    {
+      id: 65,
+      title: 'Romper',
+      image: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=400&fit=crop',
+      location: 'Queens, NY',
+      size: 'M',
+      style: 'Casual',
+      color: 'Blue',
+      type: 'Dress',
+      distance: 10,
+      contributor: {
+        name: 'Orion Kim',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
+        rating: 4.5,
+        totalDonations: 17
+      }
+    },
+    {
+      id: 66,
+      title: 'Platform Sandals',
+      image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&h=400&fit=crop',
+      location: 'Brooklyn, NY',
+      size: 'L',
+      style: 'Trendy',
+      color: 'Black',
+      type: 'Shoes',
+      distance: 8,
+      contributor: {
+        name: 'Sage Wilson',
+        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+        rating: 4.6,
+        totalDonations: 19
+      }
+    },
+    {
+      id: 67,
+      title: 'Varsity Jacket',
+      image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=400&fit=crop',
+      location: 'Bronx, NY',
+      size: 'L',
+      style: 'Casual',
+      color: 'Red',
+      type: 'Jacket',
+      distance: 14,
+      contributor: {
+        name: 'River Chen',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+        rating: 4.7,
+        totalDonations: 21
+      }
+    },
+    {
+      id: 68,
+      title: 'Camisole',
+      image: 'https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=400&h=400&fit=crop',
+      location: 'Manhattan, NY',
+      size: 'S',
+      style: 'Formal',
+      color: 'White',
+      type: 'Shirt',
+      distance: 3,
+      contributor: {
+        name: 'Aurora Park',
+        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face',
+        rating: 4.8,
+        totalDonations: 24
+      }
+    },
+    {
+      id: 69,
+      title: 'Cargo Shorts',
+      image: 'https://images.unsplash.com/photo-1506629905607-c60f40813d0d?w=400&h=400&fit=crop',
+      location: 'Queens, NY',
+      size: 'M',
+      style: 'Casual',
+      color: 'Green',
+      type: 'Shorts',
+      distance: 9,
+      contributor: {
+        name: 'Storm Martinez',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
+        rating: 4.4,
+        totalDonations: 14
+      }
+    },
+    {
+      id: 70,
+      title: 'Clutch Bag',
+      image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop',
+      location: 'Brooklyn, NY',
+      size: 'S',
+      style: 'Formal',
+      color: 'Black',
+      type: 'Accessories',
+      distance: 7,
+      contributor: {
+        name: 'Echo Johnson',
+        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+        rating: 4.9,
+        totalDonations: 32
+      }
+    },
+    {
+      id: 71,
+      title: 'Puffer Jacket',
+      image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=400&fit=crop',
+      location: 'Manhattan, NY',
+      size: 'L',
+      style: 'Sporty',
+      color: 'Blue',
+      type: 'Jacket',
+      distance: 5,
+      contributor: {
+        name: 'Blaze Lee',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+        rating: 4.6,
+        totalDonations: 18
+      }
+    },
+    {
+      id: 72,
+      title: 'A-Line Skirt',
+      image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=400&fit=crop',
+      location: 'Bronx, NY',
+      size: 'M',
+      style: 'Formal',
+      color: 'Navy',
+      type: 'Skirt',
+      distance: 12,
+      contributor: {
+        name: 'Iris Rodriguez',
+        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face',
+        rating: 4.7,
+        totalDonations: 23
+      }
+    },
+    {
+      id: 73,
+      title: 'Boat Shoes',
+      image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=400&fit=crop',
+      location: 'Queens, NY',
+      size: 'M',
+      style: 'Casual',
+      color: 'Brown',
+      type: 'Shoes',
+      distance: 11,
+      contributor: {
+        name: 'Atlas Davis',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
+        rating: 4.5,
+        totalDonations: 15
+      }
+    },
+    {
+      id: 74,
+      title: 'Tube Top',
+      image: 'https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=400&h=400&fit=crop',
+      location: 'Brooklyn, NY',
+      size: 'S',
+      style: 'Trendy',
+      color: 'Pink',
+      type: 'Shirt',
+      distance: 6,
+      contributor: {
+        name: 'Nova Wilson',
+        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+        rating: 4.8,
+        totalDonations: 27
+      }
+    },
+    {
+      id: 75,
+      title: 'Duster Coat',
+      image: 'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=400&h=400&fit=crop',
+      location: 'Manhattan, NY',
+      size: 'L',
+      style: 'Bohemian',
+      color: 'Brown',
+      type: 'Jacket',
+      distance: 4,
+      contributor: {
+        name: 'Zephyr Chen',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+        rating: 4.6,
+        totalDonations: 20
+      }
+    },
+    {
+      id: 76,
+      title: 'Shift Dress',
+      image: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=400&fit=crop',
+      location: 'Queens, NY',
+      size: 'M',
+      style: 'Formal',
+      color: 'Green',
+      type: 'Dress',
+      distance: 10,
+      contributor: {
+        name: 'Sage Kim',
+        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face',
+        rating: 4.9,
+        totalDonations: 30
+      }
+    },
+    {
+      id: 77,
+      title: 'Moccasins',
+      image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=400&fit=crop',
+      location: 'Bronx, NY',
+      size: 'L',
+      style: 'Casual',
+      color: 'Brown',
+      type: 'Shoes',
+      distance: 13,
+      contributor: {
+        name: 'River Park',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
+        rating: 4.4,
+        totalDonations: 12
+      }
+    },
+    {
+      id: 78,
+      title: 'Kimono',
+      image: 'https://images.unsplash.com/photo-1583496661160-fb5886a13d77?w=400&h=400&fit=crop',
+      location: 'Brooklyn, NY',
+      size: 'S',
+      style: 'Bohemian',
+      color: 'Purple',
+      type: 'Jacket',
+      distance: 8,
+      contributor: {
+        name: 'Aurora Martinez',
+        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+        rating: 4.7,
+        totalDonations: 25
+      }
+    },
+    {
+      id: 79,
+      title: 'Palazzo Pants',
+      image: 'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=400&h=400&fit=crop',
+      location: 'Manhattan, NY',
+      size: 'M',
+      style: 'Bohemian',
+      color: 'Black',
+      type: 'Pants',
+      distance: 5,
+      contributor: {
+        name: 'Storm Rodriguez',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+        rating: 4.8,
+        totalDonations: 26
+      }
+    },
+    {
+      id: 80,
+      title: 'Fedora Hat',
+      image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400&h=400&fit=crop',
+      location: 'Queens, NY',
+      size: 'M',
+      style: 'Vintage',
+      color: 'Black',
+      type: 'Accessories',
+      distance: 9,
+      contributor: {
+        name: 'Echo Lee',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
+        rating: 4.9,
+        totalDonations: 34
+      }
     }
   ];
 
@@ -351,10 +1444,10 @@ const FeedTab = ({ fontSize = 'sm', onNavigateToChat }: FeedTabProps) => {
         <h2 className={`${getFontSizeClass()} font-semibold text-gray-800`}>Available Items</h2>
         <button
           onClick={() => setShowFilters(true)}
-          className="flex items-center space-x-2 bg-white px-3 py-2 rounded-full shadow-sm border border-[#36723f] border-opacity-30 hover:bg-[#36723f] hover:bg-opacity-5 transition-colors"
+          className="flex items-center space-x-2 bg-[#bad3de] text-[#132c0b] px-3 py-2 rounded-full shadow-sm border border-[#36723f] border-opacity-30 hover:bg-[#a8c8d4] transition-colors"
         >
-          <Filter size={16} className="text-[#36723f]" />
-          <span className={`${getFontSizeClass()} text-[#36723f]`}>Filters</span>
+          <Filter size={16} className="text-[#132c0b]" />
+          <span className={`${getFontSizeClass()} text-[#132c0b]`}>Filters</span>
         </button>
       </div>
 
@@ -444,7 +1537,7 @@ const FeedTab = ({ fontSize = 'sm', onNavigateToChat }: FeedTabProps) => {
         <button
           onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
           disabled={currentPage === 1}
-          className="flex items-center space-x-1 px-4 py-2 bg-white rounded-full shadow-sm border border-[#36723f] border-opacity-30 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#36723f] hover:bg-opacity-5 transition-colors"
+          className="flex items-center space-x-1 px-4 py-2 bg-[#bad3de] text-[#132c0b] rounded-full shadow-sm border border-[#36723f] border-opacity-30 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#a8c8d4] transition-colors"
         >
           <ChevronLeft size={16} />
           <span className="text-sm">Back</span>
@@ -457,7 +1550,7 @@ const FeedTab = ({ fontSize = 'sm', onNavigateToChat }: FeedTabProps) => {
         <button
           onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
           disabled={currentPage === totalPages}
-          className="flex items-center space-x-1 px-4 py-2 bg-white rounded-full shadow-sm border border-[#36723f] border-opacity-30 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#36723f] hover:bg-opacity-5 transition-colors"
+          className="flex items-center space-x-1 px-4 py-2 bg-[#bad3de] text-[#132c0b] rounded-full shadow-sm border border-[#36723f] border-opacity-30 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#a8c8d4] transition-colors"
         >
           <span className="text-sm">Next</span>
           <ChevronRight size={16} />

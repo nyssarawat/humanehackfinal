@@ -1,4 +1,3 @@
-
 import { X } from 'lucide-react';
 
 interface FiltersModalProps {
@@ -65,7 +64,7 @@ const FiltersModal = ({ filters, onFiltersChange, onClose }: FiltersModalProps) 
               className={`w-full px-4 py-3 rounded-xl font-medium transition-colors ${
                 filters.showFavoritesOnly
                   ? 'bg-red-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  : 'bg-[#bad3de] text-[#132c0b] hover:bg-[#a8c8d4]'
               }`}
             >
               {filters.showFavoritesOnly ? '❤️ Showing Favorites Only' : '🤍 Show Favorites Only'}
@@ -102,7 +101,7 @@ const FiltersModal = ({ filters, onFiltersChange, onClose }: FiltersModalProps) 
                   className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                     filters.style === style
                       ? 'bg-green-600 text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      : 'bg-[#bad3de] text-[#132c0b] hover:bg-[#a8c8d4]'
                   }`}
                 >
                   {style}
@@ -122,7 +121,7 @@ const FiltersModal = ({ filters, onFiltersChange, onClose }: FiltersModalProps) 
                   className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                     filters.color === color
                       ? 'bg-blue-600 text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      : 'bg-[#bad3de] text-[#132c0b] hover:bg-[#a8c8d4]'
                   }`}
                 >
                   {color}
@@ -142,7 +141,7 @@ const FiltersModal = ({ filters, onFiltersChange, onClose }: FiltersModalProps) 
                   className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                     filters.type === type
                       ? 'bg-purple-600 text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      : 'bg-[#bad3de] text-[#132c0b] hover:bg-[#a8c8d4]'
                   }`}
                 >
                   {type}
@@ -161,7 +160,7 @@ const FiltersModal = ({ filters, onFiltersChange, onClose }: FiltersModalProps) 
             </button>
             <button
               onClick={onClose}
-              className="flex-1 px-4 py-3 bg-green-600 text-white rounded-xl font-medium hover:bg-green-700 transition-colors"
+              className="flex-1 px-4 py-3 bg-[#bad3de] text-[#132c0b] rounded-xl font-medium hover:bg-[#a8c8d4] transition-colors"
             >
               Apply Filters
             </button>
