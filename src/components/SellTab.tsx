@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Camera, MapPin, Upload } from 'lucide-react';
+import { Camera, MapPin, Upload, X, Plus } from 'lucide-react';
 
 const SellTab = () => {
   const [formData, setFormData] = useState({
@@ -10,10 +10,11 @@ const SellTab = () => {
     style: '',
     type: '',
     condition: '',
-    location: ''
+    location: 'San Ramon, CA'
   });
 
   const [selectedImages, setSelectedImages] = useState([]);
+  const [imagePreviewUrls, setImagePreviewUrls] = useState([]);
 
   const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
   const colors = ['Black', 'White', 'Blue', 'Red', 'Green', 'Yellow', 'Purple', 'Pink', 'Brown', 'Gray'];
@@ -33,15 +34,33 @@ const SellTab = () => {
       style: '',
       type: '',
       condition: '',
-      location: ''
+      location: 'San Ramon, CA'
     });
     setSelectedImages([]);
+    setImagePreviewUrls([]);
   };
 
   const handleImageUpload = (e) => {
     const files = Array.from(e.target.files);
-    // In a real app, you'd handle actual file upload here
-    setSelectedImages(files.slice(0, 4)); // Limit to 4 images
+    const newFiles = files.slice(0, 4 - selectedImages.length); // Limit to 4 total images
+    
+    if (newFiles.length > 0) {
+      setSelectedImages(prev => [...prev, ...newFiles]);
+      
+      // Create preview URLs
+      newFiles.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          setImagePreviewUrls(prev => [...prev, e.target.result]);
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+  };
+
+  const removeImage = (index) => {
+    setSelectedImages(prev => prev.filter((_, i) => i !== index));
+    setImagePreviewUrls(prev => prev.filter((_, i) => i !== index));
   };
 
   return (
@@ -52,33 +71,69 @@ const SellTab = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Photo Upload */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Photos</label>
-            <div className="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center hover:border-green-500 transition-colors">
-              <input
-                type="file"
-                multiple
-                accept="image/*"
-                onChange={handleImageUpload}
-                className="hidden"
-                id="image-upload"
-              />
-              <label htmlFor="image-upload" className="cursor-pointer">
-                <Upload size={32} className="mx-auto text-gray-400 mb-2" />
-                <p className="text-sm text-gray-600">
-                  Tap to add photos (up to 4)
+            <label className="block text-sm font-medium text-gray-700 mb-2">Photos *</label>
+            
+            {/* Image Previews */}
+            {imagePreviewUrls.length > 0 && (
+              <div className="grid grid-cols-2 gap-3 mb-4">
+                {imagePreviewUrls.map((url, index) => (
+                  <div key={index} className="relative">
+                    <img
+                      src={url}
+                      alt={`Preview ${index + 1}`}
+                      className="w-full h-32 object-cover rounded-lg border border-gray-200"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => removeImage(index)}
+                      className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600 transition-colors"
+                    >
+                      <X size={14} />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Upload Area */}
+            {selectedImages.length < 4 && (
+              <div className="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center hover:border-green-500 transition-colors">
+                <input
+                  type="file"
+                  multiple
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                  className="hidden"
+                  id="image-upload"
+                />
+                <label htmlFor="image-upload" className="cursor-pointer">
+                  <div className="flex flex-col items-center">
+                    <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-3">
+                      <Plus size={24} className="text-gray-400" />
+                    </div>
+                    <p className="text-sm text-gray-600 mb-1">
+                      Add Photos ({selectedImages.length}/4)
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      Tap to select up to 4 photos
+                    </p>
+                  </div>
+                </label>
+              </div>
+            )}
+
+            {selectedImages.length === 4 && (
+              <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+                <p className="text-sm text-green-700 text-center">
+                  ✓ Maximum photos added (4/4)
                 </p>
-                {selectedImages.length > 0 && (
-                  <p className="text-xs text-green-600 mt-1">
-                    {selectedImages.length} image{selectedImages.length > 1 ? 's' : ''} selected
-                  </p>
-                )}
-              </label>
-            </div>
+              </div>
+            )}
           </div>
 
           {/* Title */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Item Title</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Item Title *</label>
             <input
               type="text"
               placeholder="e.g., Vintage Denim Jacket"
@@ -104,7 +159,7 @@ const SellTab = () => {
           {/* Size and Color */}
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Size</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Size *</label>
               <select
                 value={formData.size}
                 onChange={(e) => setFormData({...formData, size: e.target.value})}
@@ -119,7 +174,7 @@ const SellTab = () => {
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Color</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Color *</label>
               <select
                 value={formData.color}
                 onChange={(e) => setFormData({...formData, color: e.target.value})}
@@ -137,7 +192,7 @@ const SellTab = () => {
           {/* Style and Type */}
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Style</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Style *</label>
               <select
                 value={formData.style}
                 onChange={(e) => setFormData({...formData, style: e.target.value})}
@@ -152,7 +207,7 @@ const SellTab = () => {
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Type</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Type *</label>
               <select
                 value={formData.type}
                 onChange={(e) => setFormData({...formData, type: e.target.value})}
@@ -169,7 +224,7 @@ const SellTab = () => {
 
           {/* Condition */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Condition</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Condition *</label>
             <select
               value={formData.condition}
               onChange={(e) => setFormData({...formData, condition: e.target.value})}
@@ -190,23 +245,30 @@ const SellTab = () => {
               <MapPin size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               <input
                 type="text"
-                placeholder="e.g., Brooklyn, NY"
                 value={formData.location}
                 onChange={(e) => setFormData({...formData, location: e.target.value})}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                required
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-gray-50"
+                readOnly
               />
             </div>
+            <p className="text-xs text-gray-500 mt-1">Location is set to San Ramon, CA</p>
           </div>
 
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-green-600 text-white py-4 rounded-xl font-medium hover:bg-green-700 transition-colors flex items-center justify-center space-x-2"
+            disabled={selectedImages.length === 0}
+            className="w-full bg-[#bad3de] text-[#132c0b] py-4 rounded-xl font-medium hover:bg-[#a8c8d4] transition-colors flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <Camera size={20} />
             <span>Post Item for Free</span>
           </button>
+          
+          {selectedImages.length === 0 && (
+            <p className="text-xs text-red-500 text-center">
+              Please add at least one photo to continue
+            </p>
+          )}
         </form>
 
         {/* Info Note */}
