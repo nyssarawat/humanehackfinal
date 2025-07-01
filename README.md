@@ -1,5 +1,5 @@
 # Project info
-- demo [link]([url](https://phenomenal-lamington-49e1d7.netlify.app/))
+- demo [link](https://phenomenal-lamington-49e1d7.netlify.app/) for Humane Tech hackathon June 2025
 
 ## How can I edit this code?
 
